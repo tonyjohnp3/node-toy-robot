@@ -1,8 +1,8 @@
 module.exports = Position;
 
 function Position(x, y) {
-    this.x = x;
-    this.y = y;
+    this.x = isNaN(x) ? 0 : x;
+    this.y = isNaN(y) ? 0 : y;
 }
 
 Position.prototype.getX = function() {
