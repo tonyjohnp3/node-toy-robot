@@ -9,13 +9,33 @@ function Surface(xMin, yMin, xMax, yMax) {
 
 Surface.prototype.isPosInBoundary = function(pos) {
     if (pos instanceof Position) {
-        posX = pos.getX();
-        posY = pos.getY();
+        let posX = pos.getX();
+        let posY = pos.getY();
         if (posX >= this.xMin && posY >= this.yMin && posX <= this.xMax && posY <= this.yMax) {
             return true;
         }
     }
     return false;
+};
+
+Surface.prototype.getXMin = function() {
+    return this.xMin;
+};
+
+Surface.prototype.getYMin = function() {
+    return this.yMin;
+};
+
+Surface.prototype.getXMax = function() {
+    return this.xMax;
+};
+
+Surface.prototype.getYMax = function() {
+    return this.yMax;
+};
+
+Surface.prototype.toString = function() {
+    return '\n{\n    xMin: ' + this.xMin + '\n    yMin: ' + this.yMin + '\n    xMax: ' + this.xMax + '\n    yMax: ' + this.yMax + '\n}';
 };
 
 module.exports = Surface;

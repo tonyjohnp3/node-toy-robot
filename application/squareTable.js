@@ -1,7 +1,7 @@
 const Position = require('./position');
 const Surface = require('./surface');
 
-function SquareTable(startPos, length = 1) {
+function SquareTable(startPos, length) {
     length = isNaN(length) ? 1 : length;
     if (startPos instanceof Position) {
         xMin = startPos.getX();

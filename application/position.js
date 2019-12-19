@@ -12,3 +12,7 @@ Position.prototype.getX = function() {
 Position.prototype.getY = function() {
     return this.y;
 };
+
+Position.prototype.toString = function() {
+    return '\n{\n    x: ' + this.x + '\n    y: ' + this.y + '\n}';
+};
