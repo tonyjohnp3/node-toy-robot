@@ -50,7 +50,8 @@ Robot.prototype.getPosition = function() {
 };
 
 Robot.prototype.toString = function() {
-    return '\n{\n    Position: ' + this.position + '\n    Facing: ' + this.facing + '\n    Surface: ' + this.surface + '\n}';
+    // return '\n{\n    Position: ' + this.position + '\n    Facing: ' + this.facing + '\n    Surface: ' + this.surface + '\n}';
+    return this.getPosition().getX() + ',' + this.getPosition().getY() + ',' + this.getFacing();
 };
 
 module.exports = Robot;
