@@ -3,26 +3,29 @@ const Surface = require('./surface');
 const orientation = require('./orientation');
 
 function Robot(startPos, facing, surface) {
-    this.surface = (surface instanceof Surface) ? surface : new Surface(0, 0, 1, 1);
-    this.facing = (orientation.isOrientationValid(facing.toUpperCase())) ? facing.toUpperCase() : 'NORTH';
-    this.position = ((startPos instanceof Position) && this.surface.isPosInBoundary(startPos)) ? startPos : new Position(this.surface.getXMin(), this.surface.getYMin())
+    if (!(surface instanceof Surface) || !orientation.isOrientationValid(facing.toUpperCase()) || !(startPos instanceof Position) || !surface.isPosInBoundary(startPos)) {
+        throw 'Could not place Robot!'
+    }
+    this.surface = surface;
+    this.facing = facing.toUpperCase();
+    this.position = startPos;
 }
 
 Robot.prototype.move = function(distance) {
     if (!isNaN(distance)) {
-        var tempPos;
+        let tempPos;
         switch(this.facing) {
             case 'NORTH':
-                tempPos = new Position(this.position.getX(), this.position.getY() + distance);
+                tempPos = new Position(this.position.getX(), parseInt(this.position.getY()) + parseInt(distance));
                 break;
             case 'EAST':
-                tempPos = new Position(this.position.getX() + distance, this.position.getY());
+                tempPos = new Position(parseInt(this.position.getX()) + parseInt(distance), this.position.getY());
                 break;
             case 'SOUTH':
-                tempPos = new Position(this.position.getX(), this.position.getY() - distance);
+                tempPos = new Position(this.position.getX(), parseInt(this.position.getY()) - parseInt(distance));
                 break;
             case 'WEST':
-                tempPos = new Position(this.position.getX() - distance, this.position.getY());
+                tempPos = new Position(parseInt(this.position.getX()) - parseInt(distance), this.position.getY());
                 break;
             default:
                 break;                            

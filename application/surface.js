@@ -1,10 +1,19 @@
+/**
+ * Parent class to all types of surfaces
+ */
+
 const Position = require('./position');
 
 function Surface(xMin, yMin, xMax, yMax) {
-    this.xMin = isNaN(xMin) ? 0 : xMin;
-    this.yMin = isNaN(yMin) ? 0 : yMin;
-    this.xMax = isNaN(xMax) ? 1 : ((xMax > this.xMin) ? xMax : this.xMin + 1);
-    this.yMax = isNaN(yMax) ? 1 : ((yMax > this.yMin) ? yMax : this.yMin + 1);
+    if (isNaN(xMin) || isNaN(yMin) || isNaN(xMax) || isNaN(yMax)) {
+        throw 'Coordinates are not valid numbers';
+    } else if ((xMin > xMax) || (yMin > yMax)) {
+        throw 'Max coordinate lesser than min coordinate';
+    }
+    this.xMin = xMin;
+    this.yMin = yMin;
+    this.xMax = xMax;
+    this.yMax = yMax;
 }
 
 Surface.prototype.isPosInBoundary = function(pos) {

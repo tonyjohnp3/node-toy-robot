@@ -1,8 +1,15 @@
+/**
+ * Class to hold position data
+ */
+
 module.exports = Position;
 
 function Position(x, y) {
-    this.x = isNaN(x) ? 0 : x;
-    this.y = isNaN(y) ? 0 : y;
+    if (isNaN(x) || isNaN(y)) {
+        throw 'Coordinates should be numbers'
+    }
+    this.x = x;
+    this.y = y;
 }
 
 Position.prototype.getX = function() {

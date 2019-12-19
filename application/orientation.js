@@ -1,5 +1,5 @@
 const validOrientations = new Map;
-
+// All valid orientation and direction of movement
 validOrientations.set('NORTH', {
     'left': 'WEST',
     'right': 'EAST'
@@ -16,6 +16,8 @@ validOrientations.set('WEST', {
     'left': 'SOUTH',
     'right': 'NORTH'
 });
+
+module.exports.validOrientations = validOrientations;
 
 module.exports.isOrientationValid = function(orientation) {
     return validOrientations.has(orientation.toUpperCase());
