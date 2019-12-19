@@ -13,25 +13,15 @@ describe ('Testing robot class', () => {
         expect(robot.getPosition().getX()).toBe(0);
         expect(robot.getPosition().getY()).toBe(0);
     });
-    test('It should create robot class with default value for startPosition, when invalid startPosition given', () => {
-        let robot = new Robot(new Position(-1, 10), 'North', new SquareTable(new Position(0, 0), 5));
-        expect(robot.getSurface().getXMin()).toBe(0);
-        expect(robot.getSurface().getYMin()).toBe(0);
-        expect(robot.getSurface().getXMax()).toBe(5);
-        expect(robot.getSurface().getYMax()).toBe(5);
-        expect(robot.getFacing()).toBe('NORTH');
-        expect(robot.getPosition().getX()).toBe(0);
-        expect(robot.getPosition().getY()).toBe(0);
+    test('It should throw exception, when invalid startPosition given', () => {
+        expect(() => {
+            let robot = new Robot(new Position(-1, 10), 'North', new SquareTable(new Position(0, 0), 5));
+        }).toThrow();
     });
-    test('It should create robot class with default value for orientation, when invalid orientaiotn given', () => {
-        let robot = new Robot(new Position(-1, 10), 'default', new SquareTable(new Position(0, 0), 5));
-        expect(robot.getSurface().getXMin()).toBe(0);
-        expect(robot.getSurface().getYMin()).toBe(0);
-        expect(robot.getSurface().getXMax()).toBe(5);
-        expect(robot.getSurface().getYMax()).toBe(5);
-        expect(robot.getFacing()).toBe('NORTH');
-        expect(robot.getPosition().getX()).toBe(0);
-        expect(robot.getPosition().getY()).toBe(0);
+    test('It should throw exception, when invalid orientaiotn given', () => {
+        expect(() => {
+            let robot = new Robot(new Position(-1, 10), 'default', new SquareTable(new Position(0, 0), 5));
+        }).toThrow();
     });
     test('It should turn robot to EAST, when turning RIGHT from NORTH', () => {
         let robot = new Robot(new Position(0, 0), 'North', new SquareTable(new Position(0, 0), 5));

@@ -9,18 +9,14 @@ describe ('Testing squareTable class', () => {
         expect(squareTable.getXMax()).toBe(5);
         expect(squareTable.getYMax()).toBe(5);
     });
-    test('It should create surface class with default position, if position is invalid', () => {
-        let squareTable = new SquareTable('test', 5);
-        expect(squareTable.getXMin()).toBe(0);
-        expect(squareTable.getYMin()).toBe(0);
-        expect(squareTable.getXMax()).toBe(5);
-        expect(squareTable.getYMax()).toBe(5);
+    test('It should throw exception, if position is invalid', () => {
+        expect(() => {
+            let squareTable = new SquareTable('test', 5);
+        }).toThrow();
     });
-    test('It should create surface class with the coordinates that are non numbers corrected to default value', () => {
-        let squareTable = new SquareTable(new Position(2, 3), 'test');
-        expect(squareTable.getXMin()).toBe(2);
-        expect(squareTable.getYMin()).toBe(3);
-        expect(squareTable.getXMax()).toBe(3);
-        expect(squareTable.getYMax()).toBe(4);
+    test('It should throw exception with the coordinates that are non numbers corrected to default value', () => {
+        expect(() => {
+            let squareTable = new SquareTable(new Position(2, 3), 'test');
+        }).toThrow();
     });
 });
