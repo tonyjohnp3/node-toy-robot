@@ -153,4 +153,22 @@ describe ('Testing robot class', () => {
         expect(robot.getPosition().getX()).toBe(0);
         expect(robot.getPosition().getY()).toBe(1);
     });
+    test('It should return string "0,1,NORTH"', () => {
+        let robot = new Robot(new Position(0, 0), 'NORTH', new SquareTable(new Position(0, 0), 5));
+        robot.move(1);
+        expect(robot.toString()).toBe('0,1,NORTH');
+    });
+    test('It should return string "0,0,WEST"', () => {
+        let robot = new Robot(new Position(0, 0), 'NORTH', new SquareTable(new Position(0, 0), 5));
+        robot.turn('LEFT');
+        expect(robot.toString()).toBe('0,0,WEST');
+    });
+    test('It should return string "0,0,WEST"', () => {
+        let robot = new Robot(new Position(1, 2), 'EAST', new SquareTable(new Position(0, 0), 5));
+        robot.move(1);
+        robot.move(1);
+        robot.turn('LEFT');
+        robot.move(1);
+        expect(robot.toString()).toBe('3,3,NORTH');
+    });
 });
